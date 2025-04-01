@@ -3,10 +3,7 @@
 Реализация алгоритма Прима-Краскала
  */
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Model {
     private final boolean[] b;
@@ -16,6 +13,8 @@ public class Model {
     private Set<Integer> indexes = new HashSet<>();
     private List<Integer[]> arcs;
     private int L = 0;
+
+    private int cycleIteration = 0;
 
     public Model(int[][] _matrix) {
         this.b = new boolean[_matrix.length];
@@ -54,9 +53,12 @@ public class Model {
             b[ind2] = true;
             L += matrix[ind1][ind2];
             matrix[ind1][ind2] = Integer.MAX_VALUE;
+            matrix[ind2][ind1] = Integer.MAX_VALUE;
             if(countOfComplete == matrix.length) {
                 isFull = true;
             }
+            cycleIteration++;
+            printIterationInfo();
         }
 
 
@@ -72,5 +74,19 @@ public class Model {
 
     public int getL() {
         return this.L;
+    }
+
+    private void printIterationInfo() {
+        System.out.println();
+        System.out.println("Итерация #" + this.cycleIteration);
+        System.out.println();
+        System.out.println("Вектор B: " + Arrays.toString(this.b));
+        System.out.println("Множество Xp: " + this.indexes);
+        System.out.print("Множество Ap: ");
+        for(Integer[] a : this.arcs) {
+            System.out.print(Arrays.toString(a));
+        }
+        System.out.println();
+        System.out.println("L: " + this.L);
     }
 }
