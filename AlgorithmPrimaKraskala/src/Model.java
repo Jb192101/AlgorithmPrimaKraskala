@@ -10,7 +10,7 @@ public class Model {
     private int countOfComplete = 0;
     private boolean isFull = false;
     private final int[][] matrix;
-    private Set<Integer> indexes = new HashSet<>();
+    private Set<Integer> indexes;
     private List<Integer[]> arcs;
     private int L = 0;
 
@@ -22,8 +22,10 @@ public class Model {
             b[i] = false;
         }
 
+
         this.matrix = _matrix;
         this.arcs = new ArrayList<>();
+        this.indexes = new HashSet<>();
     }
 
     // Реализация алгоритма Прима-Краскала
@@ -83,9 +85,7 @@ public class Model {
         System.out.println("Вектор B: " + Arrays.toString(this.b));
         System.out.println("Множество Xp: " + this.indexes);
         System.out.print("Множество Ap: ");
-        for(Integer[] a : this.arcs) {
-            System.out.print(Arrays.toString(a));
-        }
+        this.arcs.stream().forEach(e -> System.out.println(Arrays.toString(e)));
         System.out.println();
         System.out.println("L: " + this.L);
     }

@@ -20,35 +20,27 @@ public class Main {
                 {9, Integer.MAX_VALUE, 7, Integer.MAX_VALUE, 6, 5, Integer.MAX_VALUE},
         };
 
-        int[][] initializeMatrix2 = {
-                {Integer.MAX_VALUE, 2, 6, 9, 8, 9},
-                {2, Integer.MAX_VALUE, 3, 8, 10, 12},
-                {6, 3, Integer.MAX_VALUE, 6, 12, 10},
-                {9, 8, 6, Integer.MAX_VALUE, 8, 3},
-                {8, 10, 12, 8, Integer.MAX_VALUE, 2},
-                {9, 12, 10, 3, 2, Integer.MAX_VALUE},
-        };
+//        int[][] initializeMatrix2 = {
+//                {Integer.MAX_VALUE, 2, 6, 9, 8, 9},
+//                {2, Integer.MAX_VALUE, 3, 8, 10, 12},
+//                {6, 3, Integer.MAX_VALUE, 6, 12, 10},
+//                {9, 8, 6, Integer.MAX_VALUE, 8, 3},
+//                {8, 10, 12, 8, Integer.MAX_VALUE, 2},
+//                {9, 12, 10, 3, 2, Integer.MAX_VALUE},
+//        };
 
         Model model = new Model(initializeMatrix1);
         model.PrimaKraskala();
 
-        List<Integer[]> arcs = model.getArcs();
-        int L = model.getL();
-
         System.out.println("Ветви остова: ");
-        for(Integer[] a : arcs) {
-            System.out.print(Arrays.toString(a));
-        }
+        model.getArcs().forEach(e -> System.out.println(Arrays.toString(e)));
+
         System.out.println();
         System.out.println();
-        System.out.println("L: " + L);
+        System.out.println("L: " + model.getL());
         System.out.println();
 
         System.out.println("Матрица после изменений (для проверки): ");
-        int[][] matrix = model.getMatrix();
-        for(int i = 0; i < matrix.length; i++) {
-            System.out.println(Arrays.toString(matrix[i]));
-        }
-
+        Arrays.stream(model.getMatrix()).forEach(e -> System.out.println(Arrays.toString(e)));
     }
 }
