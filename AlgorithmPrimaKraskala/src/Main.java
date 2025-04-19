@@ -30,7 +30,7 @@ public class Main {
 //        };
 
         Model model = new Model(initializeMatrix1);
-        model.PrimaKraskala();
+        model.algoPrimaKraskala();
 
         System.out.println("Ветви остова: ");
         model.getArcs().forEach(e -> System.out.println(Arrays.toString(e)));

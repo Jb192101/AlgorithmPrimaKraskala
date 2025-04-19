@@ -29,7 +29,7 @@ public class Model {
     }
 
     // Реализация алгоритма Прима-Краскала
-    public void PrimaKraskala() {
+    public void algoPrimaKraskala() {
         // Шаг 1
         b[0] = true;
         indexes.add(0);
